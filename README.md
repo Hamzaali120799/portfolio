@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hamza Ali — Portfolio
+
+Personal portfolio built with Next.js, TailwindCSS, TypeScript, and Framer Motion.
+
+## Tech Stack
+
+- **Framework:** Next.js (App Router, static export)
+- **Styling:** TailwindCSS v4
+- **Language:** TypeScript
+- **Animations:** Framer Motion
+- **Theme:** next-themes (dark/light, system default)
+- **Icons:** Lucide React
+- **Deploy:** GitHub Pages
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+The static output is generated in the `out/` folder.
 
-To learn more about Next.js, take a look at the following resources:
+## GitHub Pages Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Option A — Repo named `portfolio` (URL: `hamzaali120799.github.io/portfolio`)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The `BASE_PATH=/portfolio` in `.github/workflows/deploy.yml` is already set correctly. Push to `main` and GitHub Actions will deploy automatically.
 
-## Deploy on Vercel
+### Option B — Repo named `hamzaali120799.github.io` (URL: `hamzaali120799.github.io`)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Open `.github/workflows/deploy.yml`
+2. Change `BASE_PATH: /portfolio` to `BASE_PATH: ` (empty)
+3. The `basePath` in `next.config.ts` resolves automatically
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Enabling GitHub Pages in your repo
+
+1. Go to your repo on GitHub
+2. Settings → Pages
+3. Source: **GitHub Actions**
+4. Save
+
+After your first push to `main`, GitHub Actions runs the workflow and the site goes live.
+
+## Customisation
+
+All content (projects, experience, skills) lives in [`lib/data.ts`](lib/data.ts). Edit it there — nothing is hardcoded in components.
+
+Replace `public/resume.pdf` with your actual CV file to enable the Download CV button.
